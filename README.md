@@ -191,7 +191,7 @@ If this project helped you, please give it a **star** ⭐ on GitHub!
 
 ## 📬 Connect
 
-Made with ❤️ by [Your Name](https://github.com/yourusername)
+Made with ❤️ by [Sunny Singh](https://github.com/flutterbysunny)
 
 [![GitHub](https://img.shields.io/badge/GitHub-yourusername-black?logo=github)](https://github.com/yourusername)
 
