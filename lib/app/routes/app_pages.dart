@@ -6,6 +6,8 @@ import '../modules/auth/view/login_view.dart';
 import '../modules/auth/view/register_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/splash/bindings/splash_binding.dart';
+import '../modules/splash/views/splash_view.dart';
 
 class AppPages {
   AppPages._();
@@ -26,6 +28,11 @@ class AppPages {
       page: () => const HomeView(),
       binding: HomeBinding(),
       middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: AppRoutes.splash,
+      page: () =>  SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }

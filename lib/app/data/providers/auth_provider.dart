@@ -22,23 +22,16 @@ class AuthProvider {
             email.toLowerCase(),
       ).toList();
 
-      print('Matched users: ${matchedUsers.length}');
-
       if (matchedUsers.isEmpty) {
         throw ApiException(message: 'User not found');
       }
 
       final user = matchedUsers.first;
-      print('Password check: ${user['password']} == $password');
-
       if (user['password'].toString() != password) {
         throw ApiException(message: 'Invalid password');
       }
 
       final userModel = UserModel.fromJson(user);
-      print('UserModel: ${userModel.email}');
-      print('Token: ${userModel.token}');
-
       return userModel;
     } on DioException catch (e) {
       throw ApiException.fromDioError(e);

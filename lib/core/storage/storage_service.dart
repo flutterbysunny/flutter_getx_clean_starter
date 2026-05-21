@@ -8,14 +8,28 @@ class StorageService {
 
   bool _isLoggedIn = false;
 
+
+
   final FlutterSecureStorage _storage = const FlutterSecureStorage(
     aOptions: AndroidOptions(encryptedSharedPreferences: true),
   );
 
   // Init — app start pe call hoga
   Future<void> init() async {
-    final value = await read(AppConstants.isLoggedInKey);
-    _isLoggedIn = value == 'true';
+    // isLoggedInKey check karo
+    final loginState = await read(AppConstants.isLoggedInKey);
+
+    // Token bhi check karo
+    final token = await read(AppConstants.tokenKey);
+
+    // Dono check karo
+    _isLoggedIn = (loginState == 'true') &&
+        (token != null && token.isNotEmpty);
+
+    print('=== STORAGE INIT ===');
+    print('loginState: $loginState');
+    print('token: $token');
+    print('isLoggedIn: $_isLoggedIn');
   }
 
   // Sync check

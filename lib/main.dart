@@ -32,16 +32,11 @@ Future<void> main() async {
 }
 
 Future<void> _initServices() async {
-  // Storage Service
-  await Get.putAsync<StorageService>(() async {
-    final service = StorageService();
-    return service;
-  });
-
-  // Dio Client
+  final storageService = StorageService();
+  await storageService.init(); // ← ye call ho raha hai?
+  Get.put<StorageService>(storageService); // ← putAsync ki jagah put use karo
   DioClient().init();
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -57,7 +52,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
 
       // Routes
-      initialRoute: AppRoutes.login,
+      initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
 
       // Default Transition

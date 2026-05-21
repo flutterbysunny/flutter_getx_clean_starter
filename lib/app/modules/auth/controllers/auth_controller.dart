@@ -11,6 +11,12 @@ class AuthController extends GetxController {
   final LoginUseCase _loginUseCase;
   final RegisterUseCase _registerUseCase;
 
+  // Ye observable add karo
+  final rememberMe = false.obs;
+
+// Ye method add karo
+  void toggleRememberMe() => rememberMe.value = !rememberMe.value;
+
   AuthController({
     required LoginUseCase loginUseCase,
     required RegisterUseCase registerUseCase,

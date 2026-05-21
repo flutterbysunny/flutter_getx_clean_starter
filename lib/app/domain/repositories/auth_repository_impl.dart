@@ -27,17 +27,13 @@ class AuthRepositoryImpl implements AuthRepository {
         password: password,
       );
 
-      print('UserModel token: ${userModel.token}');
-
       if (userModel.token != null) {
         await _storageService.writeLoginState(true);
         await _storageService.write(
           AppConstants.tokenKey,
           userModel.token!,
         );
-        print('Token saved successfully!');
       } else {
-        print('Token is NULL!');
         // Token null hai toh bhi login karo
         await _storageService.writeLoginState(true);
         await _storageService.write(
@@ -49,10 +45,8 @@ class AuthRepositoryImpl implements AuthRepository {
       print('Returning Right(user)');
       return Right(userModel.toEntity());
     } on ApiException catch (e) {
-      print('ApiException: ${e.message}');
       return Left(e);
     } catch (e) {
-      print('Unknown error: $e');
       return Left(ApiException(message: e.toString()));
     }
   }
